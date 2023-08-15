@@ -1,0 +1,63 @@
+.cl-inverted{
+    background-color:darkblue;
+    color:#EBDD63;
+}
+.cl{
+    background-color:#EBDD63;
+    color:darkblue;
+}
+.vl {
+    border-left: 6px solid darkblue;
+    height: 100%;
+    position: fixed;
+    left: 70%;
+    margin-left: -3px;
+    top: 0;
+}
+.motto{
+    width: 30%;
+    text-align:center;
+}
+.motto-img{
+    height: 30%;
+    width: 100%;
+    opacity : 0.5;
+}
+.topic-img{
+    height:30%;
+    width: 100%;
+    opacity: 0.6;
+}
+.right-img{
+    float:right;
+    width:50%;
+    opacity:80%;
+    position:relative;
+    z-index:2;
+}
+
+.alert{
+    position:relative;
+    z-index: 1;
+    width:99%;
+}
+
+.foot{
+    position:fixed;
+}
+
+#new_full{
+    display: none;
+}
+#new_empty{
+    display: block;
+}
+
+#tsparticles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }

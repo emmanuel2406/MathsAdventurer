@@ -1,0 +1,24 @@
+{% extends "MathsAdventurer/layout.html" %}
+
+{% block title %}Resources{% endblock %}
+{% block body %}
+<h1>Resources per difficulty level</h1>
+<img src="../static/mountain.jpg" alt="Mount Kilimanjaro" class="right-img">
+<div class="m-1 p-3">
+    {% for diff in difficulties  %}
+    <div class="alert alert-{{ diff.colour }}" role="alert">
+        <h4 class="alert-heading">{{ diff.name }}</h4>
+        <p>{{ diff.description }}</p>
+    </div>
+    <ul>
+        {% for resource in resources %}
+            {% if resource.difficulty == diff %}
+                <li><a href="{{ resource.url }}">{{ resource.name }}</a></li>
+            {% endif %}
+        {% empty %}
+        <p>Resources to be added soon</p>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
+{% endblock %}

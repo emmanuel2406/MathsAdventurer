@@ -1,0 +1,88 @@
+{% extends "MathsAdventurer/layout.html" %}
+
+{% block title %} {{ user.username }}'s Profile {% endblock %}
+{% block body %}
+<!-- watchlist  -->
+<div class=" d-flex justify-content-around flex-wrap">
+<div class = "m-3" style="width:65%;" >
+    <h1>Competition Watchlist:</h1>
+    {% for comp in competitions %}
+    <div class="card cl-inverted m-3 float-left" style="width: 45%;">
+        <div class="card-body">
+        <h5 class="card-title">{{ comp.name }}</h5>
+        <p class="card-text">
+        <ul>
+            <li>Number of rounds: {{ comp.rounds }}</li>
+            <li>Grades {{ comp.min_grade }} to {{ comp.max_grade }}</li>
+            <li>Run by: {{ comp.runner }}</li>
+        </ul>
+        </p>
+        <a href="{{ comp.website }}" class="card-link">Visit website</a>
+        </div>
+    </div>
+    {% empty %}
+    <h5>No maths competitions have been added. 
+    Go to the <a href="{% url 'competitions' %}">Competitions</a> tab</h5>
+    {% endfor %}
+</div>
+<div class="vl"></div>
+<!-- milestones -->
+<div class="m-3" style="text-align:center;">
+    <h1>Milestones:</h1>
+    <h5>Milestones can help you set goals so that you <br> can monitor your improvement year after year.</h5>
+    <h5 class="archive-link"><button type="button" class="archive-info btn btn-outline-warning"  >&#10067;</button>
+        Visit milestone archive <a href="{% url 'archive' %}">here</a></h5>
+    <!-- add new milestone -->
+    <div class=" card cl-inverted m-3">
+        <a data-toggle="collapse" href="#newMilestone" role="button" aria-expanded="false" aria-controls="newMilestone">
+            <h5>Add new milestone</h5>
+        </a>
+        <div class="card card-body cl-inverted collapse" id="newMilestone" style="text-align:left">
+            <form action = "{% url 'new_milestone' %}" method="post">
+            {% csrf_token %}
+            * are required<br>
+            *Competition: <select name="competition" required style="width:220px;">
+                <option value="-1" selected>SELECT FROM WATCHLIST</option>
+                {% for comp in competitions %}
+                    <option value="{{ comp.id }}">{{ comp.name }}</option>
+                {% endfor %}
+            </select><br>
+            *Year: <input type="number" name="year" value="2023"  required style="width:5rem;"><br>
+            *Best round qualification: <input type="number" name="round" value="1" style="width:5rem;" required><br>
+            Target placement: <input type="number" name="placement" style="width:10rem;"><br>
+            Target score: <input type="number" name="score" style="width:10rem;"><br>
+            <input type="submit" value="Add" class="btn btn-warning">
+            </form>
+        </div>
+    </div>
+    <!-- list all user's milestones -->
+    {% for milestone in milestones %}
+    <div class="card cl-inverted m-3">
+        <h5 class="card-title">{{ milestone.competition.name }}<br>
+        for {{ milestone.year }}</h5>
+        <p class="card-text">
+        <ol>
+            <li>Make it to round <strong>{{ milestone.round }}</strong></li>
+            {% if milestone.placement %}
+            <li>Target Placement of <strong>{{ milestone.placement }}</strong></li>
+            {% endif %}
+            {% if milestone.score %}
+            <li>Target score of <strong>{{ milestone.score }}</strong></li>
+            {% endif %}
+        </ol>
+            <!-- update status with javascript -->
+            <form class="status-form d-flex justify-content-around flex-wrap" data-id="{{ milestone.id }}">
+                <label for="status">Status:</label>
+                <select class="form-control status" id="status" name="status" data-index="{{ milestone.status }}" style="width:50%;">
+                    <option style="background-color: white" value="0">Not attempted yet</option>
+                    <option style="background-color:red;" value="1" >Missed milestone</option>
+                    <option style="background-color: greenyellow;" value="2" >Achieved milestone</option>
+                </select>
+                <input type="submit" class="status_submit btn btn-outline-warning">
+            </form>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

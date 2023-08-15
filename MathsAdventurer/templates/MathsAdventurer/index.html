@@ -1,0 +1,61 @@
+{% extends "MathsAdventurer/layout.html" %}
+
+
+{% block body %}
+<div class="d-flex">
+    <div class="card cl-inverted m-3" style="width: 30%;">
+        <div class="card-body">
+        <h5 class="card-title">Our mission</h5>
+        <p class="card-text"><strong>Maths Adventurer</strong> is a free South African based resource and training portal for all learners
+            wanting to compete in the esteemed Maths Olympiads. Our aim is to build a path for talented learners no matter their background.
+            If you think you have what it takes please register now to join us on this incredible journey of problem-solving.</p>
+        </div>
+    </div>
+
+    <div class="card cl-inverted m-3 float:right" style="width: 30%;">
+        <div class="card-body">
+        <h5 class="card-title">What this platform offers</h5>
+        <p class="card-text">
+            <ul><li>Links to various websites for info, registration and past papers</li>
+            <li>Keep track of all the national (and international) competitions</li>
+            <li>Resources categorised by topic and difficulty</li>
+            <li>Calendar for competition dates</li>
+            </ul>
+        </p>
+        </div>
+    </div>
+
+    <div class="card cl-inverted m-3 float:right" style="width: 30%;">
+        <div class="card-body">
+        <h5 class="card-title">Why register?</h5>
+        <p class="card-text">
+            <ol><li>Keep track of competitions with a watchlist</li>
+            <li>Plan goals for future competitions</li>
+            <li>Keep track of past performances</li>
+            <li>Be sent exclusive invitations to training events</li>
+            <li>And more</li>
+            </ol>
+        </p>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-around flex-wrap">
+    <div class="p-2 card cl-inverted motto">
+        <h3 class="card-text">COMPETE</h3>
+        <p>We aim to instill confidence in your own ability and create a stress-free mindset approaching any competition
+            regardless of context.</p>
+        <img class="card-img-bottom motto-img" src="static/compete.avif" alt="compete">
+    </div>
+    <div class="p-2 card cl-inverted motto">
+        <h3 class="card-text">EXPLORE</h3>
+        <p>We aim to cultivate ambition and inspire passion for the subject. Learning can be a journey full of 
+            excitement and surprises.</p>
+        <img class="card-img-bottom motto-img" src="static/explore.jpg" alt="explore">
+    </div>
+    <div class="p-2 card cl-inverted motto">
+        <h3 class="card-text">REPEAT</h3>
+        <p>We aim to encourage perseverance and resilience through failure. "Success is not final. Failure is not fatal."</p>
+        <img class="card-img-bottom motto-img" src="static/repeat.jpg" alt="repeat">
+    </div>
+</div>
+{% endblock %}

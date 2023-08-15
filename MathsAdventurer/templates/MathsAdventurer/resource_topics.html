@@ -1,0 +1,19 @@
+{% extends "MathsAdventurer/layout.html" %}
+
+{% block title %}Resource topics{% endblock %}
+{% block body %}
+<h1>Resource topics</h1>
+<div class="d-flex">
+    {% for topic in topics %}
+    <div class="card cl-inverted m-3" style="width: 19%;" onclick="location.href='resources/{{ topic.id }}'">
+        <div class="card-body">
+        <img class="card-img-top topic-img" src="{{ topic.image }}" alt = "{{ topic.name }}">
+        <h3 class="card-title">{{ topic.name }}</h5>
+        <p class="card-text">
+        {{ topic.description }}
+        </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

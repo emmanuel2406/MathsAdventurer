@@ -1,0 +1,38 @@
+{% extends "MathsAdventurer/layout.html" %}
+
+{% block title %}{{ user.username }}'s archive{% endblock %}
+{% block body %}
+<h1>{{ user.username }}'s milestone archive</h1>
+<h5>Milestones dated before this year are automatically archived.</h5>
+<div class="d-flex justify-content-around flex-wrap">
+    {% for milestone in milestones %}
+    <div class="card cl-inverted m-3 p-3" style="width: 25%; text-align: center;">
+        <h5 class="card-title">{{ milestone.competition.name }}<br>
+        for {{ milestone.year }}</h5>
+        <p class="card-text">
+        <ol>
+            <li>Make it to round <strong>{{ milestone.round }}</strong></li>
+            {% if milestone.placement %}
+            <li>Target Placement of <strong>{{ milestone.placement }}</strong></li>
+            {% endif %}
+            {% if milestone.score %}
+            <li>Target score of <strong>{{ milestone.score }}</strong></li>
+            {% endif %}
+        </ol>
+        <!-- update status with javascript -->
+        <form class="status-form d-flex justify-content-around flex-wrap" data-id="{{ milestone.id }}">
+            <label for="status">Status:</label>
+            <select class="form-control status" id="status" name="status" data-index="{{ milestone.status }}" style="width:50%;">
+                <option style="background-color: white" value="0">Not attempted yet</option>
+                <option style="background-color:red;" value="1" >Missed milestone</option>
+                <option style="background-color: greenyellow;" value="2" >Achieved milestone</option>
+            </select>
+            <input type="submit" class="status_submit btn btn-outline-warning">
+        </form>
+        </p>
+    </div>
+    {% empty %}
+    <h5>No milestones have been archived yet.</h5>
+    {% endfor %}
+</div>
+{% endblock %}
