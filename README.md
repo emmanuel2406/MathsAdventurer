@@ -1,4 +1,4 @@
-# CS50 WEB Capstone project
+# Maths Adventurer : whats it all about?
 
 ## Background
 High school maths olympiad is well-respected in my home country, South Africa. I have participated in competitive math for nearly 7 years now. However, the problem is that access to good quality training and resources is not available to all, which is reflected in the poor representativeness of the South African International Maths Olympiad Team. The main reason being that there is just not enough black talent invited to training/selection camps. In order to fix this system of elitism and help bring the love for solving maths problems to all of South Africa I wanted to design a resource portal that acts as a digital training hub and guide to lower the entry point into olympiad math for all talented learners of colour. By just knowing the best online textbooks and resources, a manageable pathway can be pursued by those enthusiastic enough.
